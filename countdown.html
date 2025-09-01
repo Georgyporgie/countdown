@@ -124,7 +124,7 @@ z-index: 200;
   </div>
 <script>
   
-var deadline = new Date("01 sep, 2025 23:59:59").getTime();
+var deadline = new Date("31 aug, 2025 23:59:59").getTime();
   
 var x = setInterval(function() {
   
@@ -140,7 +140,7 @@ document.getElementById("minute").innerHTML = minutes;
 document.getElementById("second").innerHTML =seconds; 
 if (t < 0) {
         clearInterval(x);
-        document.getElementById("demo").innerHTML = "Summer has finally come!";
+        document.getElementById("demo").innerHTML = "It's Springtime!";
         document.getElementById("day").innerHTML ='0';
         document.getElementById("hour").innerHTML ='0';
         document.getElementById("minute").innerHTML ='0' ; 
@@ -149,4 +149,5 @@ if (t < 0) {
 </script>
 </body>
 </html>
+
 
