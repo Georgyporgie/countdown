@@ -45,7 +45,7 @@ function createLeaf() {
 }
 
 // spawn leaves continuously
-setInterval(createLeaf, 3200); // one leaf every 0.8s
+setInterval(createLeaf, 4200); // one leaf every 0.8s
 
 
 
