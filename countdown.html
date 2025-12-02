@@ -158,35 +158,13 @@ if (t < 0) {
 </script>
 
 
-<script>
-  // Decide which seasonal script to load
-  const month = new Date().getMonth(); // 0 = Jan, 11 = Dec
-  let scriptFile;
-
-  if (month >= 9 && month <= 10) {
-    // October–November → autumn leaves
-    scriptFile = "leaf.js";
-    console.log("🍂 Autumn mode: loading leaf.js");
-  } else if (month >= 11 || month <= 1) {
-    // December–January → winter snow
-    scriptFile = "snow.js";
-    console.log("❄️ Winter mode: loading snow.js");
-  } else {
-    // Default (spring/summer) → no seasonal effect or choose another
-    console.log("🌱 No seasonal script loaded");
-  }
-
-  if (scriptFile) {
-    const s = document.createElement("script");
-    s.src = scriptFile;
-    document.body.appendChild(s);
-  }
-</script>
+<script src= "snow.js"> </script>
 
 
 
 </body>
 </html>
+
 
 
 
