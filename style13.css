@@ -67,29 +67,32 @@ body {
   z-index: 100;
 }
 
+/* Snowflake animations */
 .snowflake {
   position: absolute;
   top: -2rem;
   color: #ffffff;
   font-size: 1.2rem;
   opacity: 0.85;
-  animation-name: fall, sway;
+  animation-name: snowFall, snowSway; /* unique names */
   animation-duration: var(--fall, 12s), var(--sway, 4s);
   animation-timing-function: linear, ease-in-out;
   animation-iteration-count: 1, infinite;
 }
 
-@keyframes fall {
+@keyframes snowFall {
   0%   { transform: translateY(-10vh); opacity: 0; }
   5%   { opacity: 0.9; }
   100% { transform: translateY(110vh); opacity: 0.95; }
 }
 
-@keyframes sway {
+@keyframes snowSway {
   0%   { transform: translateX(0); }
   50%  { transform: translateX(var(--amp, 30px)); }
   100% { transform: translateX(0); }
 }
+
+
 
 
 
