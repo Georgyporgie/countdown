@@ -5,7 +5,9 @@
 
     function spawnSnowflake() {
       const flake = document.createElement("div");
-      flake.className = "snowflake";
+    flake.className = "snowflake";
+flake.style.animationName = "snowFall, snowSway";
+
 
       // Size variant
       const sizes = ["sm", "md", "lg"];
@@ -63,3 +65,4 @@
       const rate = w > 1200 ? 320 : w > 768 ? 380 : 450;
       startSnow(rate);
     });
+
