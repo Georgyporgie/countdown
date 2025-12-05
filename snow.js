@@ -66,3 +66,8 @@ flake.style.animationName = "snowFall, snowSway";
       startSnow(rate);
     });
 
+// snow.js
+function startSnow(rate = 380) {
+  // spawn flakes at interval
+}
+function stopSnow() { /* clear interval */ }
