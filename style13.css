@@ -71,7 +71,7 @@ body {
 .snowflake {
   position: absolute;
   top: -2rem;
-  color: #ffffff;
+  color: black;
   font-size: 1.2rem;
   opacity: 0.85;
   animation-name: snowFall, snowSway; /* unique names */
@@ -91,6 +91,7 @@ body {
   50%  { transform: translateX(var(--amp, 30px)); }
   100% { transform: translateX(0); }
 }
+
 
 
 
