@@ -1,185 +1,176 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    
-    <title> Countdown timer</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="style13.css">
+  <meta charset="UTF-8">
+  <title>Winter Countdown</title>
+  <style>
+    body {
+      background-color: #f1fff0;
+      text-align: center;
+      font-family: sans-serif;
+    }
 
+    h1 {
+      color: #2ecc71;
+      font-weight: 800;
+      font-size: 40px;
+      margin: 40px 0 20px;
+    }
 
+    #clockdiv {
+      font-family: sans-serif;
+      color: #1a1a1a;
+      display: inline-block;
+      font-weight: 100;
+      text-align: center;
+      font-size: 30px;
+      z-index: 200;
+    }
 
-<style>
-body{
-    text-align: center;
-    background : transparent;
-  font-family: sans-serif;
-  font-weight: 100;
-}
-h1 {
-  color: #2ecc71;
-  font-weight: 800;
-  font-size: 40px;
-  margin: 40px 0px 20px;
-}
+    #clockdiv > div {
+      padding: 10px;
+      border-radius: 3px;
+      background: #A5F3EB;
+      border: solid 1px #38B2AC;
+      display: inline-block;
+    }
 
- #clockdiv{
-    font-family: sans-serif;
-    color: #1a1a1a;
-    display: inline-block;
-    font-weight: 100;
-    text-align: center;
-    font-size: 30px;
-z-index:200;
- }
+    #clockdiv div > span {
+      padding: 15px;
+      border-radius: 3px;
+      background: #A5F3EB;
+      display: inline-block;
+    }
 
-#sun {
-  position: fixed;
-  top: 20%;
-  left: 50%;
-  width: 150px;
-  height: 150px;
-  background: radial-gradient(circle at center, #FFD700 40%, #FFA500 80%);
-  border-radius: 50%;
-  animation: rise 10s infinite ease-in-out;margin-top: 50px;
-  z-index: -800;
-  opacity: 0.8;
-}
+    /* Snowflakes */
+    #snow-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
 
-@keyframes rise {
-  0% { transform: translate(-50%, 50%) scale(1); opacity: 0.3; }
-  50% { transform: translate(-50%, -20%) scale(1.1); opacity: 1; }
-  100% { transform: translate(-50%, 50%) scale(1); opacity: 0.3; }
-}
+    .snowflake {
+      position: absolute;
+      top: -2rem;
+      color: #ffffff;
+      font-size: 1.5rem;
+      opacity: 0.9;
+      text-shadow: 0 0 6px rgba(173, 216, 230, 0.8);
+      animation-name: snowFall, snowSway;
+      animation-duration: var(--fall, 12s), var(--sway, 4s);
+      animation-timing-function: linear, ease-in-out;
+      animation-iteration-count: 1, infinite;
+    }
 
+    @keyframes snowFall {
+      0%   { transform: translateY(-10vh); opacity: 0; }
+      5%   { opacity: 0.9; }
+      100% { transform: translateY(110vh); opacity: 0.95; }
+    }
 
-
-
-
-
-
-#clockdiv > div{
-    padding: 10px;
-    border-radius: 3px; 
- background: #A5F3EB;  
-border: solid 1px #38B2AC;
-
-   
-    display: inline-block;
-}
-#clockdiv div > span{
-    padding: 15px;
-    border-radius: 3px;
- background: #A5F3EB; 
-    display: inline-block;
-}
-smalltext{
-    padding-top: 5px; 
-    font-size: 16px; z-index: 50;
-}
-
-#demo{
-font-size:25px;
-font-style: bold;
-animation: blinker 0.5s step-start infinite;
-z-index: 200;
-}
-
-
-@keyframes blinker {
-  50% {
-    opacity: 0;
-  }
-}
-
-
-
-
-
-</style>
+    @keyframes snowSway {
+      0%   { transform: translateX(0); }
+      50%  { transform: translateX(var(--amp, 30px)); }
+      100% { transform: translateX(0); }
+    }
+  </style>
 </head>
 <body>
-<div id="sun"></div>
-<div id="leaf-container">
-  <div id="solo-leaf"></div>
-</div>
+  <h1>Countdown to <u>Winter</u></h1>
+  <div id="clockdiv">
+    <div><span id="day"></span><div class="smalltext">Days</div></div>
+    <div><span id="hour"></span><div class="smalltext">Hours</div></div>
+    <div><span id="minute"></span><div class="smalltext">Minutes</div></div>
+    <div><span id="second"></span><div class="smalltext">Seconds</div></div>
+  </div>
+
+  <div id="leaf-container"></div>
 <div id="snow-container"></div>
 
-<h1>Countdown to <u>Winter</u></h1>
-<div id="clockdiv">
-  <div>
-    <span class="days" id="day"></span>
-    <div class="smalltext">Days</div>
-  </div>
-  <div>
-    <span class="hours" id="hour"></span>
-    <div class="smalltext">Hours</div>
-  </div>
-  <div>
-    <span class="minutes" id="minute"></span>
-    <div class="smalltext">Minutes</div>
-  </div>
-  <div>
-    <span class="seconds" id="second"></span>
-    <div class="smalltext">Seconds</div>
-  </div>
-</div>
 
-  <br>
-    <br>
-    <br>
-    
-    <div> 
-<p id="demo"></p>
-  </div>
-<script>
-  
-var deadline = new Date("30 nov, 2025 23:59:59").getTime();
-  
-var x = setInterval(function() {
-  
-var now = new Date().getTime();
-var t = deadline - now;
-var days = Math.floor(t / (1000 * 60 * 60 * 24));
-var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
-var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
-var seconds = Math.floor((t % (1000 * 60)) / 1000);
-document.getElementById("day").innerHTML =days ;
-document.getElementById("hour").innerHTML =hours;
-document.getElementById("minute").innerHTML = minutes; 
-document.getElementById("second").innerHTML =seconds; 
-if (t < 0) {
+  <script>
+    // Countdown
+    var deadline = new Date("30 Nov, 2025 23:59:59").getTime();
+    var x = setInterval(function() {
+      var now = new Date().getTime();
+      var t = deadline - now;
+      var days = Math.floor(t / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((t % (1000 * 60)) / 1000);
+      document.getElementById("day").innerHTML = days;
+      document.getElementById("hour").innerHTML = hours;
+      document.getElementById("minute").innerHTML = minutes;
+      document.getElementById("second").innerHTML = seconds;
+      if (t < 0) {
         clearInterval(x);
-        document.getElementById("demo").innerHTML = "Winter has come";
-        document.getElementById("day").innerHTML ='0';
-        document.getElementById("hour").innerHTML ='0';
-        document.getElementById("minute").innerHTML ='0' ; 
-        document.getElementById("second").innerHTML = '0'; }
-}, 1000);
+        document.getElementById("day").innerHTML = '0';
+        document.getElementById("hour").innerHTML = '0';
+        document.getElementById("minute").innerHTML = '0';
+        document.getElementById("second").innerHTML = '0';
+      }
+    }, 1000);
+
+    // Snow.js inline
+    const SNOW_EMOJIS = ["❄", "✻", "✼", "✽", "✾", "❅", "❆"];
+    const container = document.getElementById("snow-container");
+
+    function spawnSnowflake() {
+      const flake = document.createElement("div");
+      flake.className = "snowflake";
+      flake.textContent = SNOW_EMOJIS[Math.floor(Math.random() * SNOW_EMOJIS.length)];
+      flake.style.left = Math.random() * window.innerWidth + "px";
+
+      const fall = 8 + Math.random() * 10;
+      const sway = 3.5 + Math.random() * 3.5;
+      const amp  = (Math.random() * 40 + 20) * (Math.random() < 0.5 ? -1 : 1);
+
+      flake.style.setProperty("--fall", fall + "s");
+      flake.style.setProperty("--sway", sway + "s");
+      flake.style.setProperty("--amp", amp + "px");
+
+      container.appendChild(flake);
+
+      setTimeout(() => flake.remove(), (fall + 0.2) * 1000);
+    }
+
+    setInterval(() => {
+      const burst = 1 + Math.floor(Math.random() * 3);
+      for (let i = 0; i < burst; i++) spawnSnowflake();
+    }, 380);
+  </script>
+
+
+
+<script>
+// leaf.js
+function startLeaves(rate = 800) {
+  // spawn leaves at interval
+}
+function stopLeaves() { /* clear interval */ }
+
+// snow.js
+function startSnow(rate = 380) {
+  // spawn flakes at interval
+}
+function stopSnow() { /* clear interval */ }
 </script>
 
+<script>
+  const month = new Date().getMonth(); // 0 = Jan, 11 = Dec
 
-<script src= "snow.js"> </script>
+  if (month >= 9 && month <= 10) {
+    // October–November → autumn leaves
+    startLeaves();
+  } else if (month >= 11 || month <= 1) {
+    // December–January → winter snow
+    startSnow();
+  }
+</script>
 
 
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
