@@ -172,9 +172,28 @@ if (month >= 9 && month <= 10) {
 function spawnSeasonal() {
   const el = document.createElement("div");
   el.className = "leaf"; // or "flake" if you want separate styles
-  el.style.backgroundImage = `url('${currentAsset}')`;
+  el.style.left = Math.random() * window.innerWidth + "px";
+
+  // pick which image to use
+  const choice = Math.random();
+  if (choice < 0.6) {
+    el.style.backgroundImage = `url('${BLACK_IMG}')`;
+  } else if (choice < 0.85) {
+    el.style.backgroundImage = `url('${GOLDEN_IMG}')`;
+  } else {
+    el.style.backgroundImage = `url('${SNOW_IMG}')`; // snowflake!
+  }
+
+  // random duration
+  const duration = 6 + Math.random() * 6;
+  el.style.animationDuration = duration + "s";
+
   container.appendChild(el);
+  setTimeout(() => el.remove(), duration * 1000);
 }
+
+
+el.style.backgroundImage = `url('${SNOW_IMG}')`;
 
 
 
