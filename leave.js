@@ -141,19 +141,7 @@ function stopLeaves() { /* clear interval */ }
 
 
 
-function spawnFlake() {
-  const flake = document.createElement("div");
-  flake.className = "flake";
-  flake.style.left = Math.random() * window.innerWidth + "px";
-  flake.style.backgroundImage = "url('snowflake.png')";
 
-  const duration = 6 + Math.random() * 6;
-  flake.style.animationDuration = duration + "s";
-
-  document.getElementById("flake-container").appendChild(flake);
-
-  setTimeout(() => flake.remove(), duration * 1000);
-}
 
 
 leaf.style.backgroundImage = `url('${BLACK_IMG}')`;
@@ -187,6 +175,7 @@ function spawnSeasonal() {
   el.style.backgroundImage = `url('${currentAsset}')`;
   container.appendChild(el);
 }
+
 
 
 
