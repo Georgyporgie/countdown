@@ -155,4 +155,37 @@ function spawnFlake() {
 }
 
 
+leaf.style.backgroundImage = `url('${BLACK_IMG}')`;
+
+function spawnFlake() {
+  const flake = document.createElement("div");
+  flake.className = "flake";
+  flake.style.left = Math.random() * window.innerWidth + "px";
+  flake.style.backgroundImage = `url('${SNOW_IMG}')`;
+
+  const duration = 6 + Math.random() * 6;
+  flake.style.animationDuration = duration + "s";
+
+  container.appendChild(flake);
+  setTimeout(() => flake.remove(), duration * 1000);
+}
+const month = new Date().getMonth(); // 0 = Jan, 11 = Dec
+let currentAsset;
+
+if (month >= 9 && month <= 10) {
+  currentAsset = BLACK_IMG; // autumn leaves
+} else if (month === 11 || month <= 1) {
+  currentAsset = SNOW_IMG; // winter snowflakes
+} else {
+  currentAsset = GOLDEN_IMG; // spring/summer flourish
+}
+
+function spawnSeasonal() {
+  const el = document.createElement("div");
+  el.className = "leaf"; // or "flake" if you want separate styles
+  el.style.backgroundImage = `url('${currentAsset}')`;
+  container.appendChild(el);
+}
+
+
 
