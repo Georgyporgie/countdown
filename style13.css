@@ -1,6 +1,4 @@
-body {
-  background-color: #f1fff0;
-}
+
 
 /* Base leaf style */
 .leaf {
@@ -91,6 +89,7 @@ body {
   50%  { transform: translateX(var(--amp, 30px)); }
   100% { transform: translateX(0); }
 }
+
 
 
 
