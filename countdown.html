@@ -103,7 +103,6 @@ z-index: 200;
 <div id="leaf-container">
   <div id="solo-leaf"></div>
 </div>
-<div id="snow-container"></div>
 
 <h1>Countdown to <u>Winter</u></h1>
 <div id="clockdiv">
@@ -134,7 +133,7 @@ z-index: 200;
   </div>
 <script>
   
-var deadline = new Date("30 nov, 2025 23:59:59").getTime();
+var deadline = new Date("31 nov, 2025 23:59:59").getTime();
   
 var x = setInterval(function() {
   
@@ -150,7 +149,7 @@ document.getElementById("minute").innerHTML = minutes;
 document.getElementById("second").innerHTML =seconds; 
 if (t < 0) {
         clearInterval(x);
-        document.getElementById("demo").innerHTML = "Winter has come";
+        document.getElementById("demo").innerHTML = "";
         document.getElementById("day").innerHTML ='0';
         document.getElementById("hour").innerHTML ='0';
         document.getElementById("minute").innerHTML ='0' ; 
@@ -159,23 +158,11 @@ if (t < 0) {
 </script>
 
 
-<script src= "snow.js"> </script>
-
+<script src= "leave.js"> </script>
 
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
