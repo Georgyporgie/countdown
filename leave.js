@@ -117,3 +117,16 @@ function maybeSpawnGoldenRandom() {
   }
 }
 setInterval(maybeSpawnGoldenRandom, 10000);
+
+
+
+
+
+
+
+
+// leaf.js
+function startLeaves(rate = 800) {
+  // spawn leaves at interval
+}
+function stopLeaves() { /* clear interval */ }
