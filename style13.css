@@ -58,17 +58,26 @@ body {
   100% { transform: translateX(0vw)  translateY(100vh) rotate(420deg) scale(1.02); opacity: 0.88; }
 }
 
+
+
+
 .flake {
   position: absolute;
   top: -50px;
   width: 40px;
   height: 40px;
-  background-image: url('snowflake.png'); /* use the new file */
   background-size: contain;
   background-repeat: no-repeat;
   animation-name: snowFall;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
+
+@keyframes snowFall {
+  0%   { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0.8; }
+}
+
+
 
 
