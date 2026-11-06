@@ -2,8 +2,8 @@
 const IMG_BASE = ''; // e.g., 'images/' if your assets live in /images/
 
 const SNOW_IMG   = IMG_BASE + 'snowflake.png';
-const BLACK_IMG  = IMG_BASE + 'blackleaf.png';
-const GOLDEN_IMG = IMG_BASE + 'goldenleaf.png';
+const BLACK_IMG  = IMG_BASE + 'black-leaf.png';
+const GOLDEN_IMG = IMG_BASE + 'golden-leaf.png';
 
 // --- Cached DOM refs ---
 const container = document.getElementById('leaf-container');
