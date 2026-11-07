@@ -1,17 +1,11 @@
 // --- Config ---
 const IMG_BASE = ''; // e.g., 'images/' if your assets live in /images/
-const BLACK_IMG  = IMG_BASE + 'black-leaf.png';
+const BLACK_IMG = IMG_BASE + 'black-leaf.png';
 const GOLDEN_IMG = IMG_BASE + 'golden-leaf.png';
-const SNOW_IMG   = IMG_BASE + 'snowflake.png';
-
-
-
 
 // --- Cached DOM refs ---
 const container = document.getElementById('leaf-container');
 const soloLeaf = document.getElementById('solo-leaf');
-
-
 
 // --- Guards for special triggers ---
 let lastHourBlackTriggered = null;
@@ -123,79 +117,3 @@ function maybeSpawnGoldenRandom() {
   }
 }
 setInterval(maybeSpawnGoldenRandom, 10000);
-
-
-
-
-
-
-
-
-// leaf.js
-function startLeaves(rate = 800) {
-  // spawn leaves at interval
-}
-function stopLeaves() { /* clear interval */ }
-
-
-
-
-
-
-
-
-leaf.style.backgroundImage = `url('${BLACK_IMG}')`;
-
-function spawnFlake() {
-  const flake = document.createElement("div");
-  flake.className = "flake";
-  flake.style.left = Math.random() * window.innerWidth + "px";
-  flake.style.backgroundImage = `url('${SNOW_IMG}')`;
-
-  const duration = 6 + Math.random() * 6;
-  flake.style.animationDuration = duration + "s";
-
-  container.appendChild(flake);
-  setTimeout(() => flake.remove(), duration * 1000);
-}
-const month = new Date().getMonth(); // 0 = Jan, 11 = Dec
-let currentAsset;
-
-if (month >= 9 && month <= 10) {
-  currentAsset = BLACK_IMG; // autumn leaves
-} else if (month === 11 || month <= 1) {
-  currentAsset = SNOW_IMG; // winter snowflakes
-} else {
-  currentAsset = GOLDEN_IMG; // spring/summer flourish
-}
-
-function spawnSeasonal() {
-  const el = document.createElement("div");
-  el.className = "leaf"; // or "flake" if you want separate styles
-  el.style.left = Math.random() * window.innerWidth + "px";
-
-  // pick which image to use
-  const choice = Math.random();
-  if (choice < 0.6) {
-    el.style.backgroundImage = `url('${BLACK_IMG}')`;
-  } else if (choice < 0.85) {
-    el.style.backgroundImage = `url('${GOLDEN_IMG}')`;
-  } else {
-    el.style.backgroundImage = `url('${SNOW_IMG}')`; // snowflake!
-  }
-
-  // random duration
-  const duration = 6 + Math.random() * 6;
-  el.style.animationDuration = duration + "s";
-
-  container.appendChild(el);
-  setTimeout(() => el.remove(), duration * 1000);
-}
-
-
-el.style.backgroundImage = `url('${SNOW_IMG}')`;
-
-
-
-
-

@@ -61,23 +61,3 @@ body {
 
 
 
-.flake {
-  position: absolute;
-  top: -50px;
-  width: 40px;
-  height: 40px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  animation-name: snowFall;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-}
-
-@keyframes snowFall {
-  0%   { transform: translateY(-50px) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(100vh) rotate(360deg); opacity: 0.8; }
-}
-
-
-
-
